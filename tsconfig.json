@@ -3,6 +3,7 @@
         "rootDir": "./src/",
         "outDir": "./dist/",
         "noImplicitAny": true,
+        "strict": true,
         "sourceMap": true,
         "module": "ES2020",
         "moduleResolution": "bundler",
