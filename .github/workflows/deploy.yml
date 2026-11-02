@@ -6,6 +6,9 @@ jobs:
   deploy:
     environment: prod
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -14,12 +17,15 @@ jobs:
         with:
           node-version: 24
           package-manager-cache: false
-      - name: install and build
+      - name: install
+        shell: bash
+        run: npm ci
+      - name: build
         shell: bash
         env:
           API_KEY: ${{secrets.API_KEY}}
           API_URL: ${{secrets.API_URL}}
-        run: npm ci && npm run build
+        run: npm run build
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v4
         with:
