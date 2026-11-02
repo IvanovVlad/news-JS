@@ -7,11 +7,21 @@ const DotenvWebpackPlugin = require('dotenv-webpack');
 const baseConfig = {
     entry: path.resolve(__dirname, './src/index.ts'),
     mode: 'development',
+    devServer: {
+        port: 3000,
+        hot: true,
+        open: true,
+    },
     module: {
         rules: [
             {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.ts$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
             },
         ],
     },
