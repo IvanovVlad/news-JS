@@ -20,3 +20,10 @@ jobs:
           API_KEY: ${{secrets.API_KEY}}
           API_URL: ${{secrets.API_URL}}
         run: npm ci && npm run build
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: './dist'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
