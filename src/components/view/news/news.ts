@@ -12,7 +12,7 @@ class News {
         const fragment = document.createDocumentFragment();
 
         news.forEach((item, idx) => {
-            const newsClone = document.importNode(newsItemTemp.content);
+            const newsClone = document.importNode(newsItemTemp.content, true);
 
             if (idx % 2) safeSelect(newsClone, '.news__item').classList.add('alt');
 

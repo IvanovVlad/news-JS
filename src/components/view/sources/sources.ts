@@ -13,7 +13,7 @@ class Sources {
         const sourceItemTemp = safeSelect<HTMLTemplateElement>(document, '#sourceItemTemp');
 
         data.forEach((item) => {
-            const sourceClone = document.importNode(sourceItemTemp.content);
+            const sourceClone = document.importNode(sourceItemTemp.content, true);
 
             safeSelect(sourceClone, '.source__item-name').textContent = item.name;
             safeSelect(sourceClone, '.source__item').setAttribute('data-source-id', item.id);
