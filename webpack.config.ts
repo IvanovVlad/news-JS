@@ -47,7 +47,7 @@ const baseConfig: Configuration = {
 
 export default ({ mode }: { mode: string }): Configuration => {
     const isProductionMode = mode === 'prod';
-        const envConfig = isProductionMode ? prodConfig : devConfig;
+    const envConfig = isProductionMode ? prodConfig : devConfig;
 
     return merge(baseConfig, envConfig);
 };

@@ -1,0 +1,22 @@
+name: website deploy
+on:
+  pull_request:
+
+jobs:
+  deploy:
+    environment: prod
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: install and build
+        shell: bash
+        env:
+          API_KEY: ${{secrets.API_KEY}}
+          API_URL: ${{secrets.API_URL}}
+        run: npm ci && npm run build
