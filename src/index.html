@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,7 +11,11 @@
             <h1>News Portal</h1>
         </header>
         <main>
-            <div class="sources buttons"></div>
+            <div class="sources__wrapper">
+                <select class="sources sourcesContainer" aria-label="sources">
+                    <option value="">Choose a source</option>
+                </select>
+            </div>
             <div class="news"></div>
         </main>
         <footer>
@@ -19,9 +23,7 @@
         </footer>
 
         <template id="sourceItemTemp">
-            <div class="source__item">
-                <span class="source__item-name"></span>
-            </div>
+            <option class="source__item"></option>
         </template>
 
         <template id="newsItemTemp">

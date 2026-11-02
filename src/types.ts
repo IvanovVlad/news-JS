@@ -15,8 +15,8 @@ export interface NewsApiKey {
 }
 
 export interface NewsEverythingOptions {
-    searchIn?: string;
-    sources?: NewsSearchInOptions;
+    searchIn?: NewsSearchInOptions;
+    sources?: string;
 }
 
 export interface NewsEverythingArticleId {

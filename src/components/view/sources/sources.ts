@@ -14,9 +14,10 @@ class Sources {
 
         data.forEach((item) => {
             const sourceClone = document.importNode(sourceItemTemp.content, true);
+            const option = safeSelect<HTMLOptionElement>(sourceClone, '.source__item');
 
-            safeSelect(sourceClone, '.source__item-name').textContent = item.name;
-            safeSelect(sourceClone, '.source__item').setAttribute('data-source-id', item.id);
+            option.textContent = item.name;
+            option.value = item.id;
 
             fragment.append(sourceClone);
         });

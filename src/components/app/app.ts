@@ -16,7 +16,7 @@ class App {
             throw new Error('failed to start, sourcesContainer container not found');
         }
 
-        sourcesContainer.addEventListener('click', (e) =>
+        sourcesContainer.addEventListener('change', (e) =>
             this.controller.getNews(e, (data) => this.view.drawNews(data))
         );
         this.controller.getSources((data) => this.view.drawSources(data));
