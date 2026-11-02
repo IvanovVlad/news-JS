@@ -7,3 +7,10 @@ export const safeSelect = <T extends Element = HTMLElement>(el: ParentNode, sele
 
     return found as T;
 };
+
+const dateFormatter = Intl.DateTimeFormat('ru');
+
+export const formatDate = (date: string) => {
+    console.log(date);
+    return dateFormatter.format(new Date(date));
+};

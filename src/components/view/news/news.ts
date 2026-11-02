@@ -1,6 +1,6 @@
 import './news.css';
 import { NewsEverythingSuccess } from '../../../types';
-import { safeSelect } from '../../../utils';
+import { formatDate, safeSelect } from '../../../utils';
 
 class News {
     public draw(data: NewsEverythingSuccess['articles']) {
@@ -20,11 +20,7 @@ class News {
                 item.urlToImage || 'img/news_placeholder.jpg'
             })`;
             safeSelect(newsClone, '.news__meta-author').textContent = item.author || item.source.name;
-            safeSelect(newsClone, '.news__meta-date').textContent = item.publishedAt
-                .slice(0, 10)
-                .split('-')
-                .reverse()
-                .join('-');
+            safeSelect(newsClone, '.news__meta-date').textContent = formatDate(item.publishedAt);
 
             safeSelect(newsClone, '.news__description-title').textContent = item.title;
             safeSelect(newsClone, '.news__description-source').textContent = item.source.name;
