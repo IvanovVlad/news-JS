@@ -10,7 +10,12 @@
     background: #000;
     color: #e7e9ea;
     line-height: 1.4;
-    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    font-family:
+        system-ui,
+        -apple-system,
+        'Segoe UI',
+        Roboto,
+        sans-serif;
     border-bottom: 1px solid #2f3336;
     border-radius: 0;
     overflow: hidden;
@@ -98,7 +103,9 @@
     margin-left: -10px;
     opacity: 0;
     vertical-align: middle;
-    transition: margin 0.3s, opacity 0.3s;
+    transition:
+        margin 0.3s,
+        opacity 0.3s;
 }
 
 .news__item .news__description .news__read-more a:hover:after {
