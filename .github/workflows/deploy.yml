@@ -1,0 +1,35 @@
+name: website deploy
+on:
+  pull_request:
+
+jobs:
+  deploy:
+    environment: github-pages
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: install
+        shell: bash
+        run: npm ci
+      - name: build
+        shell: bash
+        env:
+          API_KEY: ${{secrets.API_KEY}}
+          API_URL: ${{secrets.API_URL}}
+        run: npm run build
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: './dist'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
