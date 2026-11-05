@@ -8,7 +8,8 @@
         "build": "webpack --config webpack.config.ts --env mode=prod",
         "lint": "eslint . --ext .ts",
         "lint:fix": "eslint . --fix",
-        "prettier:fix": "prettier ./src/ --write"
+        "prettier:fix": "prettier ./src/ --write",
+        "tsc": "tsc --noEmit"
     },
     "repository": {
         "type": "git",
