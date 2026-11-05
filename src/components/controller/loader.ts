@@ -20,9 +20,10 @@ class Loader {
         { endpoint, options = {} as O }: LoaderRequest<O>,
         callback: LoaderCallback<R> = () => {
             console.error('No callback for GET response');
-        }
+        },
+        signal?: AbortSignal
     ) {
-        this.load('GET', endpoint, callback, options);
+        this.load('GET', endpoint, callback, signal, options);
     }
 
     errorHandler(res: Response) {
@@ -46,9 +47,15 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    private load<R, O>(method: string, endpoint: string, callback: LoaderCallback<R>, options: O = {} as O) {
+    private load<R, O>(
+        method: string,
+        endpoint: string,
+        callback: LoaderCallback<R>,
+        signal?: AbortSignal,
+        options: O = {} as O
+    ) {
         const url = this.makeUrl(options, endpoint);
-        fetch(url, { method })
+        fetch(url, { method, signal: signal })
             .then(this.errorHandler)
             .then((res: Response) => res.json() as R)
             .then((data: R) => callback(data))
